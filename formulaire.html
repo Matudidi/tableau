@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="search" placeholder="" name="r">
+    <label for=""></label>
+</body>
+</html> 
+
+
+if ($etudiant->montant >=400000) {
+    $new_decision = $connectionDatabase->query("UPDATE etudiantsTable SET decision='EN ORDRE' WHERE id_etudiant = id_etudiant");
+    echo '<p>';
+        print($etudiant->decision);
+    echo '</p>';
+} else {
+    if ($etudiant->montant <400000) {
+        $new_decision = $connectionDatabase->query("UPDATE etudiantsTable SET decision= 'NON EN ORDRE' WHERE id_etudiant = id_etudiant");
+        
+        echo'<label>';
+            print_r($etudiant->decision);
+        echo'</label>';
+    }                        
+}
+SELECT  
+	etudiants.id,
+	etudiants.nom, 
+	etudiants.postnom, etudiants.departement,
+	etudiants.faculte,
+		
+	sum(fraistables.nontant)
+
+FROM 
+	fraistables,
+	etudiants
+	
+	GROUP by fraistables.id_etudiant
+
+
+
